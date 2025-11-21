@@ -79,6 +79,7 @@ class MidiDataset(Dataset):
         self.n_steps_per_bar = n_steps_per_bar
         dataset = np.load(path, allow_pickle=True, encoding="bytes")[split]
         self.data_binary, self.data_ints, self.data = self.__preprocess__(dataset)
+        print("length: ", self.__len__())
 
     def __len__(self) -> int:
         """Return the number of samples in dataset."""
