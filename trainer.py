@@ -5,7 +5,7 @@ from typing import Iterable
 import torch
 from torch import nn
 from tqdm.notebook import tqdm
-from utils import WassersteinLoss, GradientPenalty
+from criterion import WassersteinLoss, GradientPenalty
 
 
 class Trainer():
