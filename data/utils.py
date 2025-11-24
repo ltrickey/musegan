@@ -77,7 +77,10 @@ class MidiDataset(Dataset):
         """Initialize."""
         self.n_bars = n_bars
         self.n_steps_per_bar = n_steps_per_bar
-        dataset = np.load(path, allow_pickle=True, encoding="bytes")[split]
+        train = np.load(path, allow_pickle=True, encoding="bytes")["train"]
+        valid = np.load(path, allow_pickle=True, encoding="bytes")["valid"]
+        test = np.load(path, allow_pickle=True, encoding="bytes")["test"]
+        dataset = np.concatenate((train, valid, test))
         self.data_binary, self.data_ints, self.data = self.__preprocess__(dataset)
         print("length: ", self.__len__())
 
